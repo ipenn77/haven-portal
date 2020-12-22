@@ -12,6 +12,7 @@ import ManageBuyers from './ManageBuyers';
 import ManageContractors from './ManageContractors';
 import ManageProperties from './ManageProperties';
 import AdminOverview from './AdminOverview';
+import ManageOptions from './ManageOptions';
 import ManageUser from './ManageUser';
 import ManageUsers from './ManageUsers';
 import ManageOptions from './ManageOptions';
@@ -52,6 +53,7 @@ const AdminHome = ({ url }) => {
               path={`${match.path}${routes.manageContractors}`}
               component={ManageContractors}
             />
+            <Route path={`${match.path}${routes.manageOptions}`} component={ManageOptions} />
             <Route path={`${match.path}${routes.manageUser}`} component={ManageUser} />
             <Route path={`${match.path}${routes.manageUsers}`} component={ManageUsers} />
             <Route path={`${match.path}${routes.optionBuilder}`} component={OptionBuilder} />
