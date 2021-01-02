@@ -29,6 +29,11 @@ const AdminHeader = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink activeClassName="active" className={navLink} to={`${match.url}/manage-options`}>
+          Options
+        </NavLink>
+      </li>
+      <li>
         <NavLink
           activeClassName="active"
           className={navLink}
@@ -44,7 +49,7 @@ const AdminHeader = () => {
       </li>
       <li>
         <NavLink activeClassName="active" className={navLink} to={`${match.url}/manage-users`}>
-          Portal Users
+          Users
         </NavLink>
       </li>
     </>

@@ -15,6 +15,8 @@ import AdminOverview from './AdminOverview';
 import ManageOptions from './ManageOptions';
 import ManageUser from './ManageUser';
 import ManageUsers from './ManageUsers';
+import ManageOptions from './ManageOptions';
+import OptionBuilder from './OptionBuilder';
 import Scheduler from './Scheduler';
 
 const AdminHome = ({ url }) => {
@@ -45,6 +47,7 @@ const AdminHome = ({ url }) => {
             <Route path={`${match.path}${routes.manageOrgs}`} component={ManageOrgs} />
             <Route path={`${match.path}${routes.manageBuyers}`} component={ManageBuyers} />
             <Route path={`${match.path}${routes.manageProperties}`} component={ManageProperties} />
+            <Route path={`${match.path}${routes.manageOptions}`} component={ManageOptions} />
             <Route path={`${match.path}${routes.scheduler}`} component={Scheduler} />
             <Route
               path={`${match.path}${routes.manageContractors}`}
@@ -53,6 +56,7 @@ const AdminHome = ({ url }) => {
             <Route path={`${match.path}${routes.manageOptions}`} component={ManageOptions} />
             <Route path={`${match.path}${routes.manageUser}`} component={ManageUser} />
             <Route path={`${match.path}${routes.manageUsers}`} component={ManageUsers} />
+            <Route path={`${match.path}${routes.optionBuilder}`} component={OptionBuilder} />
           </Switch>
         </ContentWrapper>
       </PageWrapper>
