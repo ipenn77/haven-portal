@@ -23,6 +23,27 @@ const OptionsView = ({ selectedItem }) => {
           </div>
         )}
 
+        {selectedItem.productCategory && (
+          <div className="group">
+            <div className="title">Category:</div>
+            <div className="value">{selectedItem.productCategory}</div>
+          </div>
+        )}
+
+        {selectedItem.productSubcategory && (
+          <div className="group">
+            <div className="title">Subcategory:</div>
+            <div className="value">{selectedItem.productSubcategory}</div>
+          </div>
+        )}
+
+        {selectedItem.manufacturer && (
+          <div className="group">
+            <div className="title">Manufacturer:</div>
+            <div className="value">{selectedItem.manufacturer}</div>
+          </div>
+        )}
+
         {selectedItem.productLevel && (
           <div className="group">
             <div className="title">Level:</div>
