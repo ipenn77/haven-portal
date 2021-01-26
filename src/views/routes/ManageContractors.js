@@ -3,8 +3,11 @@ import React from 'react';
 
 import ContractorsForm from '../components/ContractorsForm';
 import ContractorsView from '../components/ContractorsView';
+import ContractorUpload from '../components/ContractorUpload';
 import { buyerPropType } from '../../constants/propTypeObjects';
 import withTabset from '../hocs/withTabset';
+
+
 
 const ManageContractorsComponent = ({
   addNewIsActive,
@@ -17,6 +20,7 @@ const ManageContractorsComponent = ({
   setSelectedItem,
   showEditView,
   updateSuccessMessage,
+  uploadIsActive,
 }) => {
   return (
     <div>
@@ -37,6 +41,8 @@ const ManageContractorsComponent = ({
           updateSuccessMessage={updateSuccessMessage}
         />
       )}
+      {uploadIsActive && !addNewIsActive && !editIsActive && (
+      <ContractorUpload refreshData={refreshData}/>)}
     </div>
   );
 };
@@ -46,6 +52,7 @@ ManageContractorsComponent.defaultProps = {
   dataItems: [],
   editIsActive: false,
   selectedItem: null,
+  uploadIsActive: false,
 };
 
 ManageContractorsComponent.propTypes = {
@@ -59,9 +66,12 @@ ManageContractorsComponent.propTypes = {
   setSelectedItem: func.isRequired,
   showEditView: func.isRequired,
   updateSuccessMessage: func.isRequired,
+  uploadIsActive: bool,
 };
 
 export default withTabset({
+  allowJsonUpload: true,
+  displaykey: 'companyName',
   primaryKey: 'id',
   tableName: 'contractors',
   WrappedComponent: ManageContractorsComponent,

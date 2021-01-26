@@ -30,6 +30,7 @@ const AddPropertyForm = ({
   const [lot, setLot] = useState('');
   const [closeOfEscrow, setCloseOfEscrow] = useState('');
   const [houseStartDate, setHouseStartDate] = useState('');
+  const [apnNum, setApnNum] = useState('');
 
   const [buttonIsDisabled, setButtonIsDisabled] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
@@ -48,6 +49,7 @@ const AddPropertyForm = ({
       setLot(selectedItem.lot);
       setCloseOfEscrow(selectedItem.closeOfEscrow);
       setHouseStartDate(selectedItem.houseStartDate || '');
+      setApnNum(selectedItem.apnNum);
     }
   }, [url]);
 
@@ -66,6 +68,7 @@ const AddPropertyForm = ({
     setLot('');
     setCloseOfEscrow('');
     setHouseStartDate('');
+    setApnNum('');
   };
 
   const setDateValue = (setState) => (e) => {
@@ -123,6 +126,12 @@ const AddPropertyForm = ({
         isRequiredString: true,
         value: closeOfEscrow,
       }),
+      new ValidationItem({
+        displayName: 'APN',
+        fieldName: 'apnNum',
+        isRequiredString: true,
+        value: apnNum,
+      }),
     ];
 
     const errors = validateItems({ items: validationObj });
@@ -145,6 +154,7 @@ const AddPropertyForm = ({
         new DBQueryItem({ id: ':f', key: 'lot', value: lot }),
         new DBQueryItem({ id: ':g', key: 'closeOfEscrow', value: closeOfEscrow }),
         new DBQueryItem({ id: ':h', key: 'houseStartDate', value: houseStartDate }),
+        new DBQueryItem({ id: ':i', key: 'apnNum', value: apnNum }),
       ];
 
       const keyItems = {
@@ -153,7 +163,7 @@ const AddPropertyForm = ({
 
       try {
         await updateItem({ authData, items: queryItems, keyItems, tableName: 'properties' });
-        updateSuccessMessage('Option successfully updated!');
+        updateSuccessMessage('Property successfully updated!');
         await refreshData();
         showEditView(false)();
       } catch (err) {
@@ -171,6 +181,7 @@ const AddPropertyForm = ({
           OrgId: org,
           Phase: phase,
           Tract: tract,
+          Apn: apnNum,
         };
 
         const { data, error } = await addProperty({ authData, body: requestBody });
@@ -189,6 +200,7 @@ const AddPropertyForm = ({
           phase,
           propertyName,
           tract,
+          apn,
         };
 
         await putItem({ authData, item, tableName: 'properties' });
@@ -273,6 +285,11 @@ const AddPropertyForm = ({
             labelText="House Start Date"
             onChange={setDateValue(setHouseStartDate)}
             startDate={houseStartDate}
+          />
+          <TextInput
+            labelText="APN Number"
+            onChange={setValue(setApnNum)}
+            value={apnNum}
           />
 
           <div className={buttonContainer}>

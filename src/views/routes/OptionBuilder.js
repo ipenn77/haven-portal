@@ -36,14 +36,36 @@ const OptionBuilder = () => {
 
     // Below will display when optionsData has been set to state.
     return (
+
       // Insert code for options builder here.
       <p>{JSON.stringify(optionsData)}</p>
+      <div>
+        <div className={tabset}>
+          {sortCategories(optionCategories).map((cat) => (
+            <div
+             className={tab}
+              //className={cx(tab, this.getTabState(MANAGE))}
+              key={cat.productOptionKey}
+              //onClick={this.updateTabState(MANAGE)}
+              //onKeyPress={this.updateTabState(MANAGE)}
+              //role="button"
+              //tabIndex={0}
+            >
+              {cat.categoryName}
+            </div>
+          ))}
+        </div>
+        <div className={content}>
+          <h1>Options Builder Content Goes Here Appliances</h1>
+        </div>
+      </div>
+
     );
   };
 
   return (
     <div>
-      <h3>Option Builder</h3>
+      <h3>Haven Option Builder</h3>
       {getMarkup()}
     </div>
   );

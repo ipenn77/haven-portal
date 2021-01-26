@@ -15,7 +15,6 @@ import AdminOverview from './AdminOverview';
 import ManageOptions from './ManageOptions';
 import ManageUser from './ManageUser';
 import ManageUsers from './ManageUsers';
-import ManageOptions from './ManageOptions';
 import OptionBuilder from './OptionBuilder';
 import Scheduler from './Scheduler';
 

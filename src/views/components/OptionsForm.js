@@ -319,6 +319,13 @@ const OptionsForm = ({ refreshData, selectedItem, showEditView, updateSuccessMes
           </DropdownMenu>
 
           <CheckboxGroup error={validationErrors.productLocation} label="Location:">
+          <CheckboxInput
+              checked={getIsChecked('whole house')}
+              label="Whole House"
+              onChange={noop}
+              onClick={setCheckboxValues(productLocation, setLocation)}
+              value="whole house"
+            />
             <CheckboxInput
               checked={getIsChecked('bar')}
               label="Bar"
